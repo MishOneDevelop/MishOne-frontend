@@ -1,0 +1,22 @@
+<div class="min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <app-navbar></app-navbar>
+
+  <!-- Contenido dinámico -->
+  <main class="flex-grow">
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/573209859741" target="_blank"
+       class="fixed bottom-4 right-4 z-50 mb-15 ">
+      <img src="assets/img/whatsapp.webp" alt="WhatsApp" class="w-20 h-20 hover:scale-130 transition-transform" />
+    </a>
+
+    <div [@routeAnimations]>
+      <router-outlet />
+    </div>
+  </main>
+
+  <!-- Footer siempre al fondo -->
+  <app-footer></app-footer>
+
+</div>
