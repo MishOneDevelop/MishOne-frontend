@@ -3,6 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import {animate, style, transition, trigger} from '@angular/animations';
 import {Footer} from './components/layauts/footer/footer';
 import {Navbar} from './components/layauts/navbar/navbar';
+import {ServicioService} from './core/services/servicio.service';
+import {PingService} from './core/services/ping.service';
 
 @Component({
   selector: 'app-root',
@@ -20,4 +22,14 @@ import {Navbar} from './components/layauts/navbar/navbar';
 })
 export class App {
 
+  constructor(private pingService: PingService) {
+    this.cargarServicios();
+  }
+
+  cargarServicios() {
+    this.pingService.getPing().subscribe({
+      next: (data) => console.log(data),
+      error: (err) => console.error('Error al obtener ping:', err)
+    });
+  }
 }
