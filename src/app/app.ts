@@ -21,17 +21,4 @@ import {PingService} from './core/services/ping.service';
   ]
 })
 export class App {
-
-  constructor(private pingService: PingService) {
-    this.cargarServicios();
-  }
-
-  cargarServicios() {
-    this.pingService.getPing().subscribe({
-      next: (data) => console.log(data),
-      error: (err) => console.error('Error al obtener ping:', err)
-    });
-  }
-
-
 }
