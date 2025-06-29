@@ -32,4 +32,6 @@ export class App {
       error: (err) => console.error('Error al obtener ping:', err)
     });
   }
+
+
 }
