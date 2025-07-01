@@ -7,8 +7,7 @@ import {CurrencyPipe} from '@angular/common';
 @Component({
   selector: 'app-servicios',
   imports: [
-    RouterLink,
-    CurrencyPipe,
+    RouterLink
   ],
   templateUrl: './servicios.component.html',
   styleUrl: './servicios.component.css'
