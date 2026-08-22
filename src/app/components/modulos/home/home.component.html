@@ -20,6 +20,32 @@
   </div>
 </section>
 
+<!-- Ideas para potenciar tu negocio -->
+<section class="bg-black text-white py-20 px-6" appScrollReveal>
+  <div class="text-center mb-12 max-w-2xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-golden">¿Cómo quieres potenciar tu negocio?</h2>
+    <p class="text-gray-300 mt-3">
+      Estas son solo algunas ideas — contanos la tuya y la construimos.
+    </p>
+  </div>
+
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    @for (idea of ideas; track idea.titulo) {
+      <div class="bg-gray-900 border border-golden rounded-lg p-6 text-center" appScrollReveal>
+        <div class="text-4xl mb-4">{{ idea.icono }}</div>
+        <h3 class="text-xl font-bold text-golden mb-2">{{ idea.titulo }}</h3>
+        <p class="text-gray-300 text-sm">{{ idea.descripcion }}</p>
+      </div>
+    }
+  </div>
+
+  <div class="text-center mt-12">
+    <a routerLink="/contacto" class="btn-golden-sm">
+      Cuéntanos tu idea
+    </a>
+  </div>
+</section>
+
 <!-- Sobre mí -->
 <section class="bg-black text-white py-20 px-4" appScrollReveal>
   <div class="max-w-4xl mx-auto">
