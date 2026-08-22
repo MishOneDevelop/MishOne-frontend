@@ -10,5 +10,5 @@ import {RouterLink} from '@angular/router';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-
+  protected readonly stack = ['Angular', 'TypeScript', 'Spring Boot', 'Python & IA', 'SQL', 'Git'];
 }
