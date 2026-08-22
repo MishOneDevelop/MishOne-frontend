@@ -5,6 +5,23 @@
       <a href="mailto:mishonedevelop@gmail.com" class="hover:text-golden">mishonedevelop@gmail.com</a>
     </p>
 
+    <!-- Agenda una sesión -->
+    <div class="bg-gray-900 border border-golden rounded-lg p-6 text-center mb-10">
+      <h3 class="text-xl font-bold text-golden mb-2">¿Preferís hablar directo?</h3>
+      <p class="text-gray-300 text-sm mb-4">
+        Agenda una llamada de 20-30 minutos para contarme tu idea, sin compromiso.
+      </p>
+      <a href="https://calendar.app.google/AWezYNuCZAkRvpNf9" target="_blank" rel="noopener" class="btn-golden-sm">
+        Agenda una sesión
+      </a>
+    </div>
+
+    <div class="flex items-center gap-4 mb-8">
+      <div class="flex-1 h-px bg-gray-700"></div>
+      <span class="text-gray-500 text-sm">o escríbenos</span>
+      <div class="flex-1 h-px bg-gray-700"></div>
+    </div>
+
     @if (estadoMensaje() !== null) {
       <div class="mb-4 p-4 rounded text-white text-center font-semibold"
            [class.bg-green-600]="estadoMensaje() === 'exito'"
