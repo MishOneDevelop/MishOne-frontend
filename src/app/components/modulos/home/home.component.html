@@ -21,30 +21,39 @@
 </section>
 
 <!-- Sobre mí -->
-<section class="bg-black text-white py-16 px-4">
-  <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10">
+<section class="bg-black text-white py-20 px-4" appScrollReveal>
+  <div class="max-w-4xl mx-auto">
 
-    <img src="assets/img/foto.jpg" alt="Miguel Ángel Hernández Muñoz"
-         class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-golden shadow-lg shrink-0" />
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-golden">¿Quién desarrolla tu proyecto?</h2>
+      <p class="text-gray-400 mt-2">La persona detrás de MishOne</p>
+    </div>
 
-    <div class="text-center md:text-left">
-      <h2 class="text-2xl md:text-3xl font-bold text-golden">Miguel Ángel Hernández Muñoz</h2>
-      <p class="text-golden text-sm mb-3">Ingeniero de Sistemas · Magíster en Ingeniería de Software</p>
+    <div class="flex flex-col md:flex-row items-center gap-10">
 
-      <p class="text-gray-300 max-w-xl">
-        4 años de experiencia desarrollando aplicaciones web y soluciones backend escalables,
-        con proyectos de analítica de datos e inteligencia artificial orientados a optimizar procesos.
-      </p>
+      <img src="assets/img/foto.jpg" alt="Miguel Ángel Hernández Muñoz"
+           class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-golden shadow-lg shrink-0" />
 
-      <!-- Stack -->
-      <div class="flex flex-wrap justify-center md:justify-start gap-2 mt-4">
-        @for (tech of stack; track tech) {
-          <span class="text-xs border border-golden rounded-full px-3 py-1 text-golden">{{ tech }}</span>
-        }
-      </div>
+      <div class="text-center md:text-left space-y-5">
+        <div>
+          <h3 class="text-2xl md:text-3xl font-bold text-golden">Miguel Ángel Hernández Muñoz</h3>
+          <p class="text-golden text-sm mt-1">Ingeniero de Sistemas · Magíster en Ingeniería de Software</p>
+        </div>
 
-      <!-- Redes -->
-      <div class="flex justify-center md:justify-start gap-4 mt-5">
+        <p class="text-gray-300 max-w-xl">
+          4 años de experiencia desarrollando aplicaciones web y soluciones backend escalables,
+          con proyectos de analítica de datos e inteligencia artificial orientados a optimizar procesos.
+        </p>
+
+        <!-- Stack -->
+        <div class="flex flex-wrap justify-center md:justify-start gap-2">
+          @for (tech of stack; track tech) {
+            <span class="text-xs border border-golden rounded-full px-3 py-1 text-golden">{{ tech }}</span>
+          }
+        </div>
+
+        <!-- Redes -->
+        <div class="flex justify-center md:justify-start gap-4">
         <a href="https://www.linkedin.com/in/miguel-ángel-hernández-muñoz-0b1b251b5"
            target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-golden transition-colors">
           <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -71,5 +80,6 @@
       </div>
     </div>
 
+    </div>
   </div>
 </section>

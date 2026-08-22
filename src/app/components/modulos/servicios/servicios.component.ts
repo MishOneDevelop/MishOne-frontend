@@ -2,11 +2,13 @@ import {Component, signal} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {Servicio} from '../../../core/models/servicio.model';
 import {ServicioService} from '../../../core/services/servicio.service';
+import {ScrollRevealDirective} from '../../../core/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-servicios',
   imports: [
-    RouterLink
+    RouterLink,
+    ScrollRevealDirective
   ],
   templateUrl: './servicios.component.html',
   styleUrl: './servicios.component.css'

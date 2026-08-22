@@ -6,7 +6,7 @@
   </h2>
 
   @for (detalle of detalles(); track detalle.idDetalleServicio) {
-    <div class="bg-neutral-900 border border-golden rounded-lg p-6 shadow-lg">
+    <div class="bg-neutral-900 border border-golden rounded-lg p-6 shadow-lg" appScrollReveal>
       <h3 class="text-2xl text-golden font-semibold mb-4">{{ detalle.titulo }}</h3>
 
       <p class="mb-4">{{ detalle.descripcion }}</p>

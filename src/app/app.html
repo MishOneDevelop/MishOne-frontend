@@ -11,7 +11,7 @@
       <img src="assets/img/whatsapp.webp" alt="WhatsApp" class="w-20 h-20 hover:scale-130 transition-transform" />
     </a>
 
-    <div [@routeAnimations]>
+    <div [@routeAnimations]="currentUrl()">
       <router-outlet />
     </div>
   </main>

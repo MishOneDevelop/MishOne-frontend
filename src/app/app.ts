@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject, signal } from '@angular/core';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { filter } from 'rxjs';
 import {animate, style, transition, trigger} from '@angular/animations';
 import {Footer} from './components/layauts/footer/footer';
 import {Navbar} from './components/layauts/navbar/navbar';
-import {ServicioService} from './core/services/servicio.service';
-import {PingService} from './core/services/ping.service';
 
 @Component({
   selector: 'app-root',
@@ -21,4 +21,19 @@ import {PingService} from './core/services/ping.service';
   ]
 })
 export class App {
+  private router = inject(Router);
+
+  // El trigger necesita un valor que cambie en cada navegacion para
+  // volver a dispararse; sin esto la transicion '* <=> *' solo corria
+  // en la carga inicial y nunca mas.
+  protected currentUrl = signal(this.router.url);
+
+  constructor() {
+    this.router.events
+      .pipe(
+        filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+        takeUntilDestroyed(),
+      )
+      .subscribe(event => this.currentUrl.set(event.urlAfterRedirects));
+  }
 }

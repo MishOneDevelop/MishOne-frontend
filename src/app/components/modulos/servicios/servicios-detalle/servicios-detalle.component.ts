@@ -2,11 +2,12 @@ import { Component, signal } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DetalleServicioService} from '../../../../core/services/detalle-servicio.service';
 import {DetalleServicio} from '../../../../core/models/detalle-servicio.model';
+import {ScrollRevealDirective} from '../../../../core/directives/scroll-reveal.directive';
 
 
 @Component({
   selector: 'app-servicios-detalle',
-  imports: [],
+  imports: [ScrollRevealDirective],
   templateUrl: './servicios-detalle.component.html',
   styleUrl: './servicios-detalle.component.css'
 })

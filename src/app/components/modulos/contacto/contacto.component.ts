@@ -7,11 +7,13 @@ import {Servicio} from '../../../core/models/servicio.model';
 import {DetalleServicioService} from '../../../core/services/detalle-servicio.service';
 import {ContactoService} from '../../../core/services/contacto.service';
 import {Contacto} from '../../../core/models/contacto.model';
+import {ScrollRevealDirective} from '../../../core/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-contacto',
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScrollRevealDirective
   ],
   templateUrl: './contacto.component.html',
   styleUrl: './contacto.component.css'

@@ -9,22 +9,11 @@
 
 body {
   color: white;
+  background-color: black;
 }
 
 * {
   font-family: var(--font-primary),sans-serif;
-  background-color: black;
-}
-
-@keyframes pulse-golden {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 rgba(255, 200, 0, 0.7);
-  }
-  50% {
-    transform: scale(1.02);
-    box-shadow: 0 0 10px rgb(255, 200, 0);
-  }
 }
 
 .btn-golden-sm {
@@ -78,4 +67,24 @@ body {
   background-color: #f7c400;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   transform: scale(1.06);
+}
+
+/* Reveal on scroll: aplicado por ScrollRevealDirective (appScrollReveal) */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
 }
