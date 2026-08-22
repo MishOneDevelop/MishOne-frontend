@@ -33,8 +33,9 @@
     @for (idea of ideas; track idea.titulo) {
       <div class="bg-gray-900 border border-golden rounded-lg p-6 text-center" appScrollReveal>
         <div class="text-4xl mb-4">{{ idea.icono }}</div>
-        <h3 class="text-xl font-bold text-golden mb-2">{{ idea.titulo }}</h3>
-        <p class="text-gray-300 text-sm">{{ idea.descripcion }}</p>
+        <h3 class="text-xl font-bold text-golden mb-3">{{ idea.titulo }}</h3>
+        <p class="font-semibold mb-2">{{ idea.problema }}</p>
+        <p class="text-gray-300 text-sm">{{ idea.solucion }}</p>
       </div>
     }
   </div>
