@@ -3,6 +3,7 @@
 
 @theme {
   --font-primary: "Silkscreen", sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --color-golden: #ffc800;
   --color-regal-blue: #243c5a;
 }
@@ -12,8 +13,15 @@ body {
   background-color: black;
 }
 
+/* Silkscreen (pixel art) le da personalidad a titulos y botones, pero es
+   dificil de leer en parrafos largos. El resto del texto usa la fuente
+   nativa del sistema: mas legible y sin pedir una fuente extra a Google. */
 * {
-  font-family: var(--font-primary),sans-serif;
+  font-family: var(--font-body), sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-primary), sans-serif;
 }
 
 .btn-golden-sm {

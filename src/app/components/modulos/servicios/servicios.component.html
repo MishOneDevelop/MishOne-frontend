@@ -4,22 +4,30 @@
     <p class="text-lg text-gray-300 mt-2">Desde páginas web hasta inteligencia artificial a medida.</p>
   </div>
 
-  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+  @if (cargando()) {
+    <div class="flex justify-center py-12" role="status" aria-label="Cargando servicios">
+      <div class="w-10 h-10 border-4 border-golden border-t-transparent rounded-full animate-spin"></div>
+    </div>
+  } @else {
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
 
-    @for (servicio of servicios(); track servicio.idServicio) {
-      <div class="bg-gray-900 border border-golden rounded-lg p-6 flex flex-col justify-between shadow-lg" appScrollReveal>
-        <div>
-          <h3 class="text-2xl font-bold mb-4">{{ servicio.nombre }}</h3>
-          <p class="text-gray-300 mb-4">{{ servicio.descripcionMin }}</p>
-          <ul class="text-sm space-y-2 text-white">
-<!--            <li>💰 Precio: Desde {{ servicio.precioMin | currency:'COP' }} Hasta {{ servicio.precioMax | currency:'COP' }}</li>-->
-            <li>⏱️ Duración estimada: {{ servicio.duracionEstimada }} días</li>
-          </ul>
+      @for (servicio of servicios(); track servicio.idServicio) {
+        <div class="bg-gray-900 border border-golden rounded-lg p-6 flex flex-col justify-between shadow-lg" appScrollReveal>
+          <div>
+            <h3 class="text-2xl font-bold mb-4">{{ servicio.nombre }}</h3>
+            <p class="text-gray-300 mb-4">{{ servicio.descripcionMin }}</p>
+            <ul class="text-sm space-y-2 text-white">
+  <!--            <li>💰 Precio: Desde {{ servicio.precioMin | currency:'COP' }} Hasta {{ servicio.precioMax | currency:'COP' }}</li>-->
+              <li>⏱️ Duración estimada: {{ servicio.duracionEstimada }} días</li>
+            </ul>
+          </div>
+          <a [routerLink]="'detalle/' + servicio.idServicio" class="btn-golden-sm my-5">
+            Ver más
+          </a>
         </div>
-        <a [routerLink]="'detalle/' + servicio.idServicio" class="btn-golden-sm my-5">
-          Ver más
-        </a>
-      </div>
-    }
-  </div>
+      } @empty {
+        <p class="text-center text-gray-400 col-span-full">No hay servicios disponibles por ahora.</p>
+      }
+    </div>
+  }
 </section>
