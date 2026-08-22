@@ -1,4 +1,5 @@
 import {Component, inject, signal} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ServicioService} from '../../../core/services/servicio.service';
 import {DetalleServicio} from '../../../core/models/detalle-servicio.model';
@@ -31,26 +32,43 @@ export class ContactoComponent {
     telefono: ['', Validators.required],
     mensaje: ['', Validators.required],
     idServicio: ['', Validators.required],
-    idDetalleServicio: ['', Validators.required]
+    // Empieza deshabilitado: no hay detalles que elegir hasta escoger un servicio.
+    idDetalleServicio: [{value: '', disabled: true}, Validators.required]
   });
 
   servicios = signal<Servicio[]>([]);
   detalleServicios = signal<DetalleServicio[]>([]);
 
   constructor() {
-    this.servicioService.getActivos().subscribe(data => this.servicios.set(data));
-
-    this.formContacto.get('idServicio')?.valueChanges.subscribe(idServicio => {
-      if (idServicio) {
-        this.detalleServicioService.getPorIdServicio(idServicio).subscribe(detalles => {
-          this.detalleServicios.set(detalles);
-          this.formContacto.get('idDetalleServicio')?.setValue('');
-        });
-      } else {
-        this.detalleServicios.set([]);
-        this.formContacto.get('idDetalleServicio')?.setValue('');
-      }
+    this.servicioService.getActivos().subscribe({
+      next: data => this.servicios.set(data),
+      error: () => this.servicios.set([]),
     });
+
+    // takeUntilDestroyed: sin esto la suscripcion sigue viva despues de salir de
+    // la ruta, porque el FormGroup no se destruye solo junto con el componente.
+    this.formContacto.get('idServicio')?.valueChanges
+      .pipe(takeUntilDestroyed())
+      .subscribe(idServicio => {
+        if (idServicio) {
+          this.detalleServicioService.getPorIdServicio(idServicio).subscribe({
+            next: detalles => this.setDetalleServicios(detalles),
+            error: () => this.setDetalleServicios([]),
+          });
+        } else {
+          this.setDetalleServicios([]);
+        }
+      });
+  }
+
+  // El estado disabled/enabled del control se maneja aqui (no con un binding
+  // [disabled] en el template) para no pelear con ReactiveFormsModule, que es
+  // quien controla ese atributo cuando el elemento tiene formControlName.
+  private setDetalleServicios(detalles: DetalleServicio[]) {
+    this.detalleServicios.set(detalles);
+    const control = this.formContacto.get('idDetalleServicio');
+    control?.setValue('');
+    detalles.length > 0 ? control?.enable() : control?.disable();
   }
 
   enviarContacto() {

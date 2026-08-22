@@ -5,11 +5,10 @@ import {DetalleServicio} from '../../../../core/models/detalle-servicio.model';
 
 
 @Component({
-  selector: 'app-servicios-detalle.component',
+  selector: 'app-servicios-detalle',
   imports: [],
   templateUrl: './servicios-detalle.component.html',
-  styleUrl: './servicios-detalle.component.css',
-  standalone: true
+  styleUrl: './servicios-detalle.component.css'
 })
 export class ServiciosDetalleComponent {
   detalles = signal<DetalleServicio[]>([]);
@@ -30,6 +29,7 @@ export class ServiciosDetalleComponent {
     this.detalleService.getPorIdServicio(id).subscribe({
       next: (resp) => this.detalles.set(resp),
       complete: () => this.cargando.set(false),
+      error: () => this.cargando.set(false),
     });
   }
 
