@@ -40,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Datos personales que no deben publicarse en el repo
+src/assets/*.pdf
