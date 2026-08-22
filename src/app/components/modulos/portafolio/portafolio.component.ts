@@ -14,7 +14,7 @@ import {ScrollRevealDirective} from '../../../core/directives/scroll-reveal.dire
 export class PortafolioComponent {
   protected readonly proyectos = [
     {
-      nombre: 'Celuna & Lunar',
+      nombre: 'Celuna & Lunara',
       etiqueta: 'E-commerce',
       descripcion: 'Tienda de ropa online en Bogotá: catálogo de productos, carrito de compras, pedidos por WhatsApp y pago contraentrega.',
       url: 'https://tienda-juvy.onrender.com/',
